@@ -5,21 +5,25 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
+/* Shared easing */
+const ease = [0.22, 1, 0.36, 1] as const;
+
 function HeroVisual() {
   return (
     <div className="relative mx-auto mt-16 w-full max-w-lg lg:mt-0 lg:max-w-none">
       {/* Glow */}
       <div className="absolute -inset-12 rounded-full bg-rose/[0.06] blur-[80px]" />
 
-      <div className="relative">
+      <div className="relative will-change-transform">
         {/* ── Main layout: selfie left, result right ── */}
         <div className="flex items-end gap-4 sm:gap-5">
           {/* Selfie (before) */}
           <motion.div
-            initial={{ opacity: 0, x: -30, rotate: -3 }}
-            animate={{ opacity: 1, x: 0, rotate: -2 }}
-            transition={{ duration: 0.9, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-[42%] flex-shrink-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease }}
+            className="relative w-[42%] flex-shrink-0 will-change-[opacity,transform]"
+            style={{ rotate: "-2deg" }}
           >
             <div className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-xl shadow-black/[0.08] sm:rounded-3xl">
               <Image
@@ -33,22 +37,18 @@ function HeroVisual() {
               />
             </div>
             {/* Label */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.5 }}
-              className="absolute -bottom-3 left-3 rounded-full border border-border/50 bg-white/90 px-3 py-1 text-[10px] font-medium tracking-wide text-muted-foreground shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs"
-            >
+            <div className="absolute -bottom-3 left-3 rounded-full border border-border/50 bg-white/90 px-3 py-1 text-[10px] font-medium tracking-wide text-muted-foreground shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs">
               Dein Selfie
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Result (after) — larger, elevated */}
           <motion.div
-            initial={{ opacity: 0, x: 30, rotate: 3 }}
-            animate={{ opacity: 1, x: 0, rotate: 1 }}
-            transition={{ duration: 0.9, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-[58%] flex-shrink-0 -mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45, ease }}
+            className="relative w-[58%] flex-shrink-0 -mb-4 will-change-[opacity,transform]"
+            style={{ rotate: "1deg" }}
           >
             <div className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-2xl shadow-black/[0.12] sm:rounded-3xl">
               <Image
@@ -62,26 +62,21 @@ function HeroVisual() {
               />
             </div>
             {/* Label */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.8, duration: 0.5 }}
-              className="absolute -bottom-3 right-3 rounded-full border border-rose/20 bg-white/90 px-3 py-1 text-[10px] font-semibold tracking-wide text-rose shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs"
-            >
+            <div className="absolute -bottom-3 right-3 rounded-full border border-rose/20 bg-white/90 px-3 py-1 text-[10px] font-semibold tracking-wide text-rose shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs">
               ✦ Dein Look
-            </motion.div>
+            </div>
           </motion.div>
         </div>
 
         {/* ── Product floating between the two images ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute -bottom-6 left-[34%] z-10 -translate-x-1/2 sm:-bottom-8 sm:left-[36%]"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6, ease }}
+          className="absolute -bottom-6 left-[34%] z-10 -translate-x-1/2 will-change-[opacity,transform] sm:-bottom-8 sm:left-[36%]"
         >
           <motion.div
-            animate={{ y: [-4, 4, -4] }}
+            animate={{ y: [-3, 3, -3] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             <div className="h-20 w-20 overflow-hidden rounded-2xl border border-border/60 bg-white p-2 shadow-xl shadow-black/[0.15] sm:h-24 sm:w-24 sm:rounded-3xl sm:p-2.5">
@@ -100,9 +95,9 @@ function HeroVisual() {
 
         {/* ── Before → After arrow ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.4 }}
           className="absolute left-[30%] top-[12%] z-10 sm:left-[32%] sm:top-[10%]"
         >
           <div className="flex items-center gap-1.5 rounded-full border border-border/40 bg-white/95 py-1.5 pl-3 pr-2 shadow-lg backdrop-blur-sm sm:gap-2 sm:py-2 sm:pl-4 sm:pr-3">
@@ -149,9 +144,9 @@ export function Hero() {
           <div className="flex-1 text-center lg:text-left">
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-4 py-1.5 text-xs font-medium tracking-wide text-muted-foreground backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-rose animate-pulse" />
@@ -161,13 +156,9 @@ export function Hero() {
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              transition={{ duration: 0.6, delay: 0.15, ease }}
               className="mt-8 font-serif text-[2.75rem] font-medium leading-[1.08] tracking-tight sm:text-6xl lg:text-[4.25rem] xl:text-7xl"
             >
               Lass deine Kunden den Lippenstift{" "}
@@ -177,13 +168,9 @@ export function Hero() {
 
             {/* Subheadline */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              transition={{ duration: 0.5, delay: 0.25, ease }}
               className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0"
             >
               DOTRY verwandelt jede Produktseite in eine pers&ouml;nliche
@@ -196,9 +183,9 @@ export function Hero() {
 
             {/* CTA */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
               className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
             >
               <a href="https://cal.com/aljosa-zidan-wozbsk/dotry" target="_blank" rel="noopener noreferrer">
@@ -216,7 +203,7 @@ export function Hero() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
+              transition={{ duration: 0.4, delay: 0.45 }}
               className="mt-5 text-sm text-muted-foreground"
             >
               Kostenlose Pilotphase &middot; Keine IT n&ouml;tig
