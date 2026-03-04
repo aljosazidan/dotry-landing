@@ -56,7 +56,6 @@ export function CTA() {
             </a>
           </motion.div>
 
-          {/* Trust items */}
           <motion.div
             variants={fadeUpStagger}
             className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"

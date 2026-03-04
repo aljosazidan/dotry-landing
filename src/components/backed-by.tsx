@@ -21,15 +21,14 @@ const logos = [
 ];
 
 export function BackedBy() {
-  const scrollLogos = [...logos, ...logos, ...logos, ...logos];
+  /* Only duplicate twice (not 4x) — fewer DOM nodes */
+  const scrollLogos = [...logos, ...logos];
 
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Top border */}
       <div className="absolute inset-x-0 top-0 h-px bg-border/50" />
 
       <div className="pb-16 pt-24 sm:pb-20 sm:pt-32">
-        {/* Text content */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -77,7 +76,6 @@ export function BackedBy() {
 
         {/* Scrolling logo bar */}
         <div className="relative mt-16 sm:mt-20">
-          {/* Fade edges */}
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-white to-transparent sm:w-48" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-white to-transparent sm:w-48" />
 
@@ -85,7 +83,7 @@ export function BackedBy() {
             {scrollLogos.map((logo, i) => (
               <div
                 key={i}
-                className="flex h-10 flex-shrink-0 items-center opacity-[0.15] grayscale transition-all duration-700 hover:opacity-40 hover:grayscale-0"
+                className="flex h-10 flex-shrink-0 items-center opacity-[0.15] grayscale"
               >
                 <Image
                   src={logo.src}
@@ -102,7 +100,6 @@ export function BackedBy() {
         </div>
       </div>
 
-      {/* Bottom border */}
       <div className="absolute inset-x-0 bottom-0 h-px bg-border/50" />
     </section>
   );

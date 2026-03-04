@@ -6,35 +6,23 @@ import { fadeUpStagger, staggerContainer } from "@/lib/animations";
 function StepVisual1() {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-xl border border-border/40 bg-gradient-to-b from-rose-light/50 to-white">
-      {/* Product page mockup */}
       <div className="flex h-full items-center justify-center gap-4 px-6">
-        {/* Product image placeholder */}
         <div className="h-24 w-16 rounded-lg bg-gradient-to-b from-rose/20 to-rose/10" />
-        {/* Product info */}
         <div className="space-y-2">
           <div className="h-2 w-20 rounded-full bg-foreground/10" />
           <div className="h-2 w-14 rounded-full bg-foreground/5" />
           <div className="h-1.5 w-24 rounded-full bg-foreground/5" />
-          {/* DOTRY button */}
-          <motion.div
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="mt-1 flex h-6 w-20 items-center justify-center rounded-full bg-rose text-[8px] font-bold text-white"
-          >
+          <div className="mt-1 flex h-6 w-20 items-center justify-center rounded-full bg-rose text-[8px] font-bold text-white">
             ausprobieren
-          </motion.div>
+          </div>
         </div>
       </div>
-      {/* Cursor clicking */}
-      <motion.div
-        animate={{ x: [-3, 3, -3], y: [-2, 2, -2] }}
-        transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-10 right-16"
-      >
+      {/* Static cursor */}
+      <div className="absolute bottom-10 right-16">
         <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
           <path d="M1 1L1 14L5 10L9 18L12 16L8 8L14 8L1 1Z" fill="#0A0A0B" stroke="white" strokeWidth="1.5"/>
         </svg>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -43,18 +31,12 @@ function StepVisual2() {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-xl border border-border/40 bg-gradient-to-b from-rose-light/50 to-white">
       <div className="flex h-full items-center justify-center">
-        {/* Face with try-on */}
         <div className="relative">
           <div className="h-28 w-28 rounded-full bg-gradient-to-br from-[#F5D0C5] to-[#E8B4A8] shadow-inner">
             <div className="flex h-full items-end justify-center pb-6">
-              <motion.div
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="h-4 w-10 rounded-full bg-rose/70"
-              />
+              <div className="h-4 w-10 rounded-full bg-rose/70" />
             </div>
           </div>
-          {/* Color swatches below face */}
           <div className="mt-3 flex justify-center gap-1.5">
             {["#B94A6A", "#C4707E", "#8B3A4A", "#D4888F", "#9E4158"].map((c, i) => (
               <div
@@ -64,14 +46,10 @@ function StepVisual2() {
               />
             ))}
           </div>
-          {/* AI badge */}
-          <motion.div
-            animate={{ y: [-2, 2, -2] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="absolute -right-8 top-0 rounded-full bg-white px-2 py-0.5 text-[9px] font-bold text-rose shadow-md border border-rose/20"
-          >
+          {/* Static AI badge */}
+          <div className="absolute -right-8 top-0 rounded-full bg-white px-2 py-0.5 text-[9px] font-bold text-rose shadow-md border border-rose/20">
             KI
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
@@ -82,7 +60,6 @@ function StepVisual3() {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-xl border border-border/40 bg-gradient-to-b from-rose-light/50 to-white">
       <div className="flex h-full items-center justify-center px-6">
-        {/* Email preview */}
         <div className="w-full max-w-[200px] rounded-lg border border-border/40 bg-white p-3 shadow-sm">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#F5D0C5] to-[#E8B4A8]">
@@ -100,16 +77,11 @@ function StepVisual3() {
             <div className="h-1 w-full rounded-full bg-foreground/5" />
             <div className="h-1 w-3/4 rounded-full bg-foreground/5" />
           </div>
-          <motion.div
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="mt-2 h-5 w-16 rounded-full bg-rose text-[7px] font-bold text-white flex items-center justify-center"
-          >
+          <div className="mt-2 h-5 w-16 rounded-full bg-rose text-[7px] font-bold text-white flex items-center justify-center">
             Jetzt kaufen
-          </motion.div>
+          </div>
         </div>
       </div>
-      {/* DSGVO badge */}
       <div className="absolute bottom-3 right-3 rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[8px] font-semibold text-green-700">
         DSGVO &#10003;
       </div>
@@ -147,10 +119,10 @@ export function HowItWorks() {
       id="so-funktionierts"
       className="relative overflow-hidden bg-surface py-28 sm:py-36 lg:py-44"
     >
-      <div className="pointer-events-none absolute right-0 top-1/2 h-[600px] w-[600px] -translate-y-1/2 translate-x-1/2 rounded-full bg-rose/[0.03] blur-[120px]" />
+      {/* Soft glow — no blur */}
+      <div className="pointer-events-none absolute right-0 top-1/2 h-[600px] w-[600px] -translate-y-1/2 translate-x-1/2 rounded-full bg-rose/[0.03] opacity-50" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -172,7 +144,6 @@ export function HowItWorks() {
           </motion.h2>
         </motion.div>
 
-        {/* Steps - card grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -180,7 +151,7 @@ export function HowItWorks() {
           viewport={{ once: true, margin: "-50px" }}
           className="mt-20 grid gap-8 md:grid-cols-3"
         >
-          {steps.map((step, i) => {
+          {steps.map((step) => {
             const Visual = step.visual;
             return (
               <motion.div
@@ -188,10 +159,8 @@ export function HowItWorks() {
                 variants={fadeUpStagger}
                 className="group"
               >
-                {/* Visual */}
                 <Visual />
 
-                {/* Step number + title */}
                 <div className="mt-6 flex items-start gap-3">
                   <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2 border-rose/30 text-xs font-bold text-rose">
                     {step.number}

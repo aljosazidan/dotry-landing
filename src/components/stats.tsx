@@ -136,9 +136,9 @@ export function Stats() {
       id="ergebnisse"
       className="relative overflow-hidden bg-dark py-28 text-white sm:py-32 lg:py-40"
     >
-      {/* Glows */}
-      <div className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-rose/8 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/2 translate-y-1/2 rounded-full bg-purple-500/5 blur-[120px]" />
+      {/* Soft glows — no blur */}
+      <div className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-rose/5 opacity-50" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/2 translate-y-1/2 rounded-full bg-purple-500/3 opacity-40" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -158,10 +158,9 @@ export function Stats() {
             variants={fadeUpStagger}
             className="mt-6 text-center font-serif text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
           >
-            Zahlen, die f&uuml;r sich sprechen.
+            Zahlen, die für sich sprechen.
           </motion.h2>
 
-          {/* Stats 2x2 grid */}
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:gap-6">
             {stats.map((stat, i) => (
               <motion.div
@@ -170,13 +169,11 @@ export function Stats() {
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 transition-all duration-500 hover:border-white/[0.12] hover:bg-white/[0.05] lg:p-10"
               >
                 <div className="flex items-start justify-between">
-                  {/* Icon */}
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.06]">
                     {stat.icon}
                   </div>
                 </div>
 
-                {/* Number */}
                 <div className="mt-6 font-serif text-5xl font-medium tracking-tight text-white sm:text-6xl lg:text-7xl">
                   <AnimatedStat
                     prefix={stat.prefix}
@@ -186,15 +183,12 @@ export function Stats() {
                   />
                 </div>
 
-                {/* Label */}
                 <p className="mt-3 text-base leading-relaxed text-white/60 lg:text-lg">
                   {stat.label}
                 </p>
 
-                {/* Animated bar */}
                 <BarVisual percent={stat.bar} color={stat.color} />
 
-                {/* Source */}
                 <p className="mt-3 text-[11px] text-white/25">
                   {stat.source}
                 </p>
@@ -206,9 +200,9 @@ export function Stats() {
             variants={fadeUpStagger}
             className="mt-8 text-center text-xs text-white/20"
           >
-            * Quellen: Perfect Corp. AI Trends Report (2024) &middot; Segment
-            State of Personalization Report (2023) &middot; BrandXR Research
-            Report (2025) &middot; Beauty Tech Statistics (2025)
+            * Quellen: Perfect Corp. AI Trends Report (2024) · Segment
+            State of Personalization Report (2023) · BrandXR Research
+            Report (2025) · Beauty Tech Statistics (2025)
           </motion.p>
         </motion.div>
       </div>

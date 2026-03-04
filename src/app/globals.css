@@ -100,7 +100,7 @@
   background: #A1A1AA;
 }
 
-/* Logo bar animation */
+/* Logo bar animation — GPU-accelerated */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -108,6 +108,7 @@
 
 .animate-scroll-left {
   animation: scroll-left 50s linear infinite;
+  will-change: transform;
 }
 
 /* Gradient text utility */
@@ -124,4 +125,20 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-scroll-left {
+    animation: none;
+  }
 }

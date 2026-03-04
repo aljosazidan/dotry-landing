@@ -4,28 +4,22 @@ import { Hero } from "@/components/hero";
 import { BackedBy } from "@/components/backed-by";
 
 const Problem = dynamic(
-  () => import("@/components/problem").then((m) => m.Problem),
-  { ssr: true }
+  () => import("@/components/problem").then((m) => m.Problem)
 );
 const Features = dynamic(
-  () => import("@/components/features").then((m) => m.Features),
-  { ssr: true }
+  () => import("@/components/features").then((m) => m.Features)
 );
 const HowItWorks = dynamic(
-  () => import("@/components/how-it-works").then((m) => m.HowItWorks),
-  { ssr: true }
+  () => import("@/components/how-it-works").then((m) => m.HowItWorks)
 );
 const Stats = dynamic(
-  () => import("@/components/stats").then((m) => m.Stats),
-  { ssr: true }
+  () => import("@/components/stats").then((m) => m.Stats)
 );
 const CTA = dynamic(
-  () => import("@/components/cta").then((m) => m.CTA),
-  { ssr: true }
+  () => import("@/components/cta").then((m) => m.CTA)
 );
 const Footer = dynamic(
-  () => import("@/components/footer").then((m) => m.Footer),
-  { ssr: true }
+  () => import("@/components/footer").then((m) => m.Footer)
 );
 
 export default function Home() {

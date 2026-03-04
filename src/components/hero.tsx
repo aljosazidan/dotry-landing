@@ -11,10 +11,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 function HeroVisual() {
   return (
     <div className="relative mx-auto mt-16 w-full max-w-lg lg:mt-0 lg:max-w-none">
-      {/* Glow */}
-      <div className="absolute -inset-12 rounded-full bg-rose/[0.06] blur-[80px]" />
-
-      <div className="relative will-change-transform">
+      <div className="relative">
         {/* ── Main layout: selfie left, result right ── */}
         <div className="flex items-end gap-4 sm:gap-5">
           {/* Selfie (before) */}
@@ -33,11 +30,11 @@ function HeroVisual() {
                 height={1071}
                 className="h-auto w-full object-cover"
                 priority
-                sizes="(max-width: 1024px) 42vw, 300px"
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 42vw, 300px"
               />
             </div>
             {/* Label */}
-            <div className="absolute -bottom-3 left-3 rounded-full border border-border/50 bg-white/90 px-3 py-1 text-[10px] font-medium tracking-wide text-muted-foreground shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs">
+            <div className="absolute -bottom-3 left-3 rounded-full border border-border/50 bg-white px-3 py-1 text-[10px] font-medium tracking-wide text-muted-foreground shadow-sm sm:px-4 sm:py-1.5 sm:text-xs">
               Dein Selfie
             </div>
           </motion.div>
@@ -58,39 +55,34 @@ function HeroVisual() {
                 height={1205}
                 className="h-auto w-full object-cover"
                 priority
-                sizes="(max-width: 1024px) 58vw, 400px"
+                sizes="(max-width: 640px) 220px, (max-width: 1024px) 58vw, 400px"
               />
             </div>
             {/* Label */}
-            <div className="absolute -bottom-3 right-3 rounded-full border border-rose/20 bg-white/90 px-3 py-1 text-[10px] font-semibold tracking-wide text-rose shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs">
+            <div className="absolute -bottom-3 right-3 rounded-full border border-rose/20 bg-white px-3 py-1 text-[10px] font-semibold tracking-wide text-rose shadow-sm sm:px-4 sm:py-1.5 sm:text-xs">
               ✦ Dein Look
             </div>
           </motion.div>
         </div>
 
-        {/* ── Product floating between the two images ── */}
+        {/* ── Product between the two images (no infinite animation) ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.6, ease }}
           className="absolute -bottom-6 left-[34%] z-10 -translate-x-1/2 will-change-[opacity,transform] sm:-bottom-8 sm:left-[36%]"
         >
-          <motion.div
-            animate={{ y: [-3, 3, -3] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="h-20 w-20 overflow-hidden rounded-2xl border border-border/60 bg-white p-2 shadow-xl shadow-black/[0.15] sm:h-24 sm:w-24 sm:rounded-3xl sm:p-2.5">
-              <Image
-                src="/images/product.webp"
-                alt="Lippenstift Produkt"
-                width={96}
-                height={96}
-                className="h-full w-full rounded-xl object-cover"
-                loading="lazy"
-                sizes="96px"
-              />
-            </div>
-          </motion.div>
+          <div className="h-20 w-20 overflow-hidden rounded-2xl border border-border/60 bg-white p-2 shadow-xl shadow-black/[0.15] sm:h-24 sm:w-24 sm:rounded-3xl sm:p-2.5">
+            <Image
+              src="/images/product.webp"
+              alt="Lippenstift Produkt"
+              width={96}
+              height={96}
+              className="h-full w-full rounded-xl object-cover"
+              loading="lazy"
+              sizes="96px"
+            />
+          </div>
         </motion.div>
 
         {/* ── Before → After arrow ── */}
@@ -100,7 +92,7 @@ function HeroVisual() {
           transition={{ delay: 0.7, duration: 0.4 }}
           className="absolute left-[30%] top-[12%] z-10 sm:left-[32%] sm:top-[10%]"
         >
-          <div className="flex items-center gap-1.5 rounded-full border border-border/40 bg-white/95 py-1.5 pl-3 pr-2 shadow-lg backdrop-blur-sm sm:gap-2 sm:py-2 sm:pl-4 sm:pr-3">
+          <div className="flex items-center gap-1.5 rounded-full border border-border/40 bg-white py-1.5 pl-3 pr-2 shadow-lg sm:gap-2 sm:py-2 sm:pl-4 sm:pr-3">
             <span className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/60 sm:text-[10px]">
               vorher
             </span>
@@ -132,10 +124,10 @@ function HeroVisual() {
 export function Hero() {
   return (
     <section className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-6 pt-20 pb-12 lg:px-8">
-      {/* Subtle background gradient */}
+      {/* Subtle background — solid opacity, no blur */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-rose/[0.04] blur-[120px]" />
-        <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-rose/[0.03] blur-[100px]" />
+        <div className="absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-rose/[0.04] opacity-60" />
+        <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-rose/[0.03] opacity-50" />
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl">
@@ -148,9 +140,9 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-4 py-1.5 text-xs font-medium tracking-wide text-muted-foreground backdrop-blur-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose animate-pulse" />
-                KI-gest&uuml;tztes Virtual Try-On f&uuml;r Beauty-Retail
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-4 py-1.5 text-xs font-medium tracking-wide text-muted-foreground">
+                <span className="h-1.5 w-1.5 rounded-full bg-rose" />
+                KI-gestütztes Virtual Try-On für Beauty-Retail
               </span>
             </motion.div>
 
@@ -173,10 +165,10 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.25, ease }}
               className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0"
             >
-              DOTRY verwandelt jede Produktseite in eine pers&ouml;nliche
+              DOTRY verwandelt jede Produktseite in eine persönliche
               Beauty-Beratung. Ein Klick, ein Selfie — und der Look sitzt.{" "}
               <span className="font-medium text-foreground/80">
-                Weniger Retouren. Mehr Verk&auml;ufe.
+                Weniger Retouren. Mehr Verkäufe.
               </span>{" "}
               Kunden, die wiederkommen.
             </motion.p>
@@ -206,7 +198,7 @@ export function Hero() {
               transition={{ duration: 0.4, delay: 0.45 }}
               className="mt-5 text-sm text-muted-foreground"
             >
-              Kostenlose Pilotphase &middot; Keine IT n&ouml;tig
+              Kostenlose Pilotphase · Keine IT nötig
             </motion.p>
           </div>
 
