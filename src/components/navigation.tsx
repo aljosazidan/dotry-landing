@@ -53,12 +53,14 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button
-              className="rounded-full bg-rose px-6 text-white hover:bg-rose/90 transition-all duration-300 hover:shadow-lg hover:shadow-rose/20"
-              size="sm"
-            >
-              Demo anfragen
-            </Button>
+            <a href="https://cal.com/aljosa-zidan-wozbsk/dotry" target="_blank" rel="noopener noreferrer">
+              <Button
+                className="rounded-full bg-rose px-6 text-white hover:bg-rose/90 transition-all duration-300 hover:shadow-lg hover:shadow-rose/20"
+                size="sm"
+              >
+                Demo anfragen
+              </Button>
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -104,11 +106,13 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
-              <Button
-                className="mt-2 w-full rounded-full bg-rose text-white hover:bg-rose/90"
-              >
-                Demo anfragen
-              </Button>
+              <a href="https://cal.com/aljosa-zidan-wozbsk/dotry" target="_blank" rel="noopener noreferrer">
+                <Button
+                  className="mt-2 w-full rounded-full bg-rose text-white hover:bg-rose/90"
+                >
+                  Demo anfragen
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}

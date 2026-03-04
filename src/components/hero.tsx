@@ -201,13 +201,15 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
             >
-              <Button
-                size="lg"
-                className="group h-12 rounded-full bg-rose px-8 text-base text-white transition-all duration-300 hover:bg-rose/90 hover:shadow-xl hover:shadow-rose/20 sm:h-14 sm:px-10 sm:text-lg"
-              >
-                Live-Demo anfragen
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
+              <a href="https://cal.com/aljosa-zidan-wozbsk/dotry" target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  className="group h-12 rounded-full bg-rose px-8 text-base text-white transition-all duration-300 hover:bg-rose/90 hover:shadow-xl hover:shadow-rose/20 sm:h-14 sm:px-10 sm:text-lg"
+                >
+                  Live-Demo anfragen
+                  <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </a>
             </motion.div>
 
             {/* Trust line */}

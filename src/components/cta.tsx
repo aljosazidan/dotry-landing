@@ -45,13 +45,15 @@ export function CTA() {
           </motion.p>
 
           <motion.div variants={fadeUpStagger} className="mt-10">
-            <Button
-              size="lg"
-              className="group h-14 rounded-full bg-rose px-10 text-lg text-white transition-all duration-300 hover:bg-rose/90 hover:shadow-xl hover:shadow-rose/25"
-            >
-              Live-Demo anfragen
-              <ArrowRight className="ml-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
+            <a href="https://cal.com/aljosa-zidan-wozbsk/dotry" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="group h-14 rounded-full bg-rose px-10 text-lg text-white transition-all duration-300 hover:bg-rose/90 hover:shadow-xl hover:shadow-rose/25"
+              >
+                Live-Demo anfragen
+                <ArrowRight className="ml-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+            </a>
           </motion.div>
 
           {/* Trust items */}
