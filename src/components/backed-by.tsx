@@ -93,7 +93,8 @@ export function BackedBy() {
                   width={120}
                   height={40}
                   className="h-7 w-auto object-contain sm:h-8"
-                  unoptimized
+                  loading="lazy"
+                  sizes="120px"
                 />
               </div>
             ))}

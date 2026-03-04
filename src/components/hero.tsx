@@ -23,12 +23,13 @@ function HeroVisual() {
           >
             <div className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-xl shadow-black/[0.08] sm:rounded-3xl">
               <Image
-                src="/images/selfie.jpeg"
+                src="/images/selfie.webp"
                 alt="Selfie einer Kundin"
-                width={400}
-                height={500}
+                width={800}
+                height={1071}
                 className="h-auto w-full object-cover"
                 priority
+                sizes="(max-width: 1024px) 42vw, 300px"
               />
             </div>
             {/* Label */}
@@ -51,12 +52,13 @@ function HeroVisual() {
           >
             <div className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-2xl shadow-black/[0.12] sm:rounded-3xl">
               <Image
-                src="/images/result.png"
+                src="/images/result.webp"
                 alt="KI-generiertes Ergebnis mit Lippenstift"
-                width={500}
-                height={600}
+                width={900}
+                height={1205}
                 className="h-auto w-full object-cover"
                 priority
+                sizes="(max-width: 1024px) 58vw, 400px"
               />
             </div>
             {/* Label */}
@@ -84,26 +86,47 @@ function HeroVisual() {
           >
             <div className="h-20 w-20 overflow-hidden rounded-2xl border border-border/60 bg-white p-2 shadow-xl shadow-black/[0.15] sm:h-24 sm:w-24 sm:rounded-3xl sm:p-2.5">
               <Image
-                src="/images/product.jpg"
+                src="/images/product.webp"
                 alt="Lippenstift Produkt"
-                width={80}
-                height={80}
+                width={96}
+                height={96}
                 className="h-full w-full rounded-xl object-cover"
-                priority
+                loading="lazy"
+                sizes="96px"
               />
             </div>
           </motion.div>
         </motion.div>
 
-        {/* ── Connecting visual: subtle arrow/plus ── */}
+        {/* ── Before → After arrow ── */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.6 }}
-          className="absolute left-[18%] top-[15%] z-10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute left-[30%] top-[12%] z-10 sm:left-[32%] sm:top-[10%]"
         >
-          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-md backdrop-blur-sm sm:h-8 sm:w-8">
-            <span className="text-xs font-medium text-muted-foreground sm:text-sm">+</span>
+          <div className="flex items-center gap-1.5 rounded-full border border-border/40 bg-white/95 py-1.5 pl-3 pr-2 shadow-lg backdrop-blur-sm sm:gap-2 sm:py-2 sm:pl-4 sm:pr-3">
+            <span className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground/60 sm:text-[10px]">
+              vorher
+            </span>
+            <svg
+              width="24"
+              height="10"
+              viewBox="0 0 24 10"
+              fill="none"
+              className="text-rose sm:h-3 sm:w-7"
+            >
+              <path
+                d="M0 5h21m0 0l-4-4m4 4l-4 4"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="text-[9px] font-semibold uppercase tracking-widest text-rose sm:text-[10px]">
+              nachher
+            </span>
           </div>
         </motion.div>
       </div>

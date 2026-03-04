@@ -1,23 +1,26 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#FAFAF8",
+};
 
 export const metadata: Metadata = {
   title: "DOTRY — KI-gestütztes Virtual Try-On für Beauty-Retail",
@@ -31,12 +34,24 @@ export const metadata: Metadata = {
     "Beauty Retail",
     "KI Beauty",
   ],
+  metadataBase: new URL("https://dotry.de"),
   openGraph: {
     title: "DOTRY — Virtual Try-On für Beauty-Retail",
     description:
       "Lass deine Kunden den Lippenstift anprobieren — bevor sie ihn kaufen.",
     type: "website",
     url: "https://dotry.de",
+    siteName: "DOTRY",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DOTRY — Virtual Try-On für Beauty-Retail",
+    description:
+      "Lass deine Kunden den Lippenstift anprobieren — bevor sie ihn kaufen.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -48,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${playfair.variable} font-sans antialiased`}
       >
         {children}
       </body>
