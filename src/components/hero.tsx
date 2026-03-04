@@ -3,85 +3,111 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
-function PhoneMockup() {
+function HeroVisual() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mx-auto mt-16 w-full max-w-xs sm:mt-20"
-    >
-      {/* Glow behind phone */}
-      <div className="absolute -inset-8 rounded-full bg-rose/10 blur-[60px]" />
+    <div className="relative mx-auto mt-16 w-full max-w-lg lg:mt-0 lg:max-w-none">
+      {/* Glow */}
+      <div className="absolute -inset-12 rounded-full bg-rose/[0.06] blur-[80px]" />
 
-      {/* Phone frame */}
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-border/80 bg-white p-2 shadow-2xl shadow-black/10">
-        <div className="overflow-hidden rounded-[2rem] bg-gradient-to-b from-rose-light to-white">
-          {/* Screen content */}
-          <div className="px-5 pb-6 pt-8">
-            {/* Top bar */}
-            <div className="flex items-center justify-between">
-              <div className="h-2 w-14 rounded-full bg-foreground/10" />
-              <div className="h-5 w-5 rounded-full bg-foreground/5" />
+      <div className="relative">
+        {/* ── Main layout: selfie left, result right ── */}
+        <div className="flex items-end gap-4 sm:gap-5">
+          {/* Selfie (before) */}
+          <motion.div
+            initial={{ opacity: 0, x: -30, rotate: -3 }}
+            animate={{ opacity: 1, x: 0, rotate: -2 }}
+            transition={{ duration: 0.9, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-[42%] flex-shrink-0"
+          >
+            <div className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-xl shadow-black/[0.08] sm:rounded-3xl">
+              <Image
+                src="/images/selfie.jpeg"
+                alt="Selfie einer Kundin"
+                width={400}
+                height={500}
+                className="h-auto w-full object-cover"
+                priority
+              />
             </div>
-
-            {/* Face placeholder - abstract circle */}
-            <div className="mx-auto mt-6 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-rose/10 via-rose/5 to-transparent">
-              <div className="h-24 w-24 rounded-full bg-gradient-to-br from-[#F5D0C5] to-[#E8B4A8]">
-                {/* Lips indicator */}
-                <div className="flex h-full items-end justify-center pb-5">
-                  <div className="h-3 w-8 rounded-full bg-rose/60" />
-                </div>
-              </div>
-            </div>
-
-            {/* Color swatches */}
-            <div className="mx-auto mt-5 flex items-center justify-center gap-2">
-              {["#B94A6A", "#C4707E", "#8B3A4A", "#D4888F", "#9E4158"].map(
-                (color, i) => (
-                  <motion.div
-                    key={color}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1.4 + i * 0.08, duration: 0.3 }}
-                    className={`h-6 w-6 rounded-full border-2 ${
-                      i === 0 ? "border-foreground/30 scale-110" : "border-transparent"
-                    }`}
-                    style={{ backgroundColor: color }}
-                  />
-                )
-              )}
-            </div>
-
-            {/* DOTRY it button */}
+            {/* Label */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.8, duration: 0.5 }}
-              className="mx-auto mt-5 flex h-9 w-full max-w-[160px] items-center justify-center rounded-full bg-foreground/90 text-xs font-semibold text-white"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 0.5 }}
+              className="absolute -bottom-3 left-3 rounded-full border border-border/50 bg-white/90 px-3 py-1 text-[10px] font-medium tracking-wide text-muted-foreground shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs"
             >
-              ausprobieren
+              Dein Selfie
             </motion.div>
+          </motion.div>
 
-            {/* Bottom indicator */}
-            <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-foreground/10" />
-          </div>
+          {/* Result (after) — larger, elevated */}
+          <motion.div
+            initial={{ opacity: 0, x: 30, rotate: 3 }}
+            animate={{ opacity: 1, x: 0, rotate: 1 }}
+            transition={{ duration: 0.9, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-[58%] flex-shrink-0 -mb-4"
+          >
+            <div className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-2xl shadow-black/[0.12] sm:rounded-3xl">
+              <Image
+                src="/images/result.png"
+                alt="KI-generiertes Ergebnis mit Lippenstift"
+                width={500}
+                height={600}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
+            {/* Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.8, duration: 0.5 }}
+              className="absolute -bottom-3 right-3 rounded-full border border-rose/20 bg-white/90 px-3 py-1 text-[10px] font-semibold tracking-wide text-rose shadow-sm backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-xs"
+            >
+              ✦ Dein Look
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
 
-      {/* Floating sparkle decorations */}
-      <motion.div
-        animate={{ y: [-4, 4, -4] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -right-4 top-8 h-3 w-3 rounded-full bg-rose/30"
-      />
-      <motion.div
-        animate={{ y: [3, -3, 3] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-3 top-1/3 h-2 w-2 rounded-full bg-rose/20"
-      />
-    </motion.div>
+        {/* ── Product floating between the two images ── */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute -bottom-6 left-[34%] z-10 -translate-x-1/2 sm:-bottom-8 sm:left-[36%]"
+        >
+          <motion.div
+            animate={{ y: [-4, 4, -4] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="h-20 w-20 overflow-hidden rounded-2xl border border-border/60 bg-white p-2 shadow-xl shadow-black/[0.15] sm:h-24 sm:w-24 sm:rounded-3xl sm:p-2.5">
+              <Image
+                src="/images/product.jpg"
+                alt="Lippenstift Produkt"
+                width={80}
+                height={80}
+                className="h-full w-full rounded-xl object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* ── Connecting visual: subtle arrow/plus ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.6 }}
+          className="absolute left-[18%] top-[15%] z-10"
+        >
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-md backdrop-blur-sm sm:h-8 sm:w-8">
+            <span className="text-xs font-medium text-muted-foreground sm:text-sm">+</span>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   );
 }
 
@@ -95,8 +121,7 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl">
-        {/* Desktop: two-column layout */}
-        <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-16">
+        <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-16 xl:gap-24">
           {/* Left: Text content */}
           <div className="flex-1 text-center lg:text-left">
             {/* Badge */}
@@ -173,9 +198,9 @@ export function Hero() {
             </motion.p>
           </div>
 
-          {/* Right: Phone mockup */}
-          <div className="flex-shrink-0 lg:flex-shrink-0">
-            <PhoneMockup />
+          {/* Right: Visual showcase */}
+          <div className="w-full flex-shrink-0 lg:w-[48%] xl:w-[45%]">
+            <HeroVisual />
           </div>
         </div>
       </div>
